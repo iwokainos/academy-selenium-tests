@@ -7,6 +7,7 @@ import pages.SignUpPage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+
 public class SignUpFormTest extends FunctionalTest {
 
     @Test
@@ -16,10 +17,12 @@ public class SignUpFormTest extends FunctionalTest {
         SignUpPage signUpPage = new SignUpPage(driver);
         assertTrue(signUpPage.isInitialised());
 
-        signUpPage.enterName("Paddy", "Fox");
+        signUpPage.enterName("Iwo", "Sadecki");
 
         ReceiptPage receiptPage = signUpPage.submit();
 
-        assertEquals("Thank you", receiptPage.confirmationHeader());
+        /**this assertion checks if Receipt Page generates Thank you! message following submission */
+        assertEquals("Thank you!", receiptPage.confirmationHeader());
+        assertEquals("You are now subscribed to our service.", receiptPage.subscriptionText());
     }
 }
